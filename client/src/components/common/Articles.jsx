@@ -36,7 +36,7 @@ function Articles() {
     setSelectedCategory(newCategory);
     getArticles(newCategory); // Fetch articles based on selected category
   }
-
+gi
   // Navigate to article
   function gotoArticleById(articleObj) {
     navigate(`../${articleObj.articleId}`, { state: articleObj });
