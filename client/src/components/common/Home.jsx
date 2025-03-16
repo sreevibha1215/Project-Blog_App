@@ -3,7 +3,7 @@ import { userAuthorContextObj } from '../../contexts/UserAuthorContext';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Home.css'; // Import the CSS
+import './Home.css'; 
 
 function Home() {
     const { currentUser, setCurrentUser } = useContext(userAuthorContextObj);
@@ -34,7 +34,7 @@ function Home() {
                 localStorage.setItem('currentuser', JSON.stringify(finalUser));
 
                 if (!finalUser.isActive) {
-                    setError('Your account is blocked. Contact admin.');
+                    setError('Account blocked. Contact ADMIN');
                 } else {
                     if (selectedRole === 'user') {
                         navigate(`/user-profile/${finalUser.email}`);
@@ -67,7 +67,7 @@ function Home() {
                     if(storedUser){
                         let finalUser = userFromAPI.data.payload.filter((user) => user.email === storedUser.email)[0];
                         if (finalUser && finalUser.isActive === false) {
-                            setError('Your account is blocked. Contact admin.');
+                            setError('Account blocked. Contact ADMIN');
                         } else {
                             setError("");
                         }
@@ -108,11 +108,10 @@ function Home() {
             ) : (
                 <div className='blog-info'>
                     <h1>What is a Blog?</h1>
-<p>A blog is a regularly updated website or web application where an individual, group, or organization publishes articles (also known as posts) on a regular basis. </p>
-<h1>Why use a Blog App?</h1>
-<p>Blog apps can be useful for creating, managing and growing a blog, especially if you want to have a mobile-first experience. </p>
-<h2>*This blog App is only tech related*</h2>
-<h3>Dive into this blog app and learn new things.......</h3>
+<p>A blog app is a software application designed to facilitate the creation, management, and publication of blog content. It provides a platform for individuals or groups to share their thoughts, ideas, and information with an audience. </p>
+<p>A blog provides a platform to express your thoughts, opinions, and experiences with the world.</p>
+<p>A blog can showcase your expertise and skills, establishing you as an authority in your field.</p>
+<p>Blogging can be a creative outlet for writing, photography, and other forms of expression.</p>
                 </div>
             )}
         </div>

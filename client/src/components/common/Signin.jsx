@@ -2,14 +2,12 @@ import React, { useState, useContext } from 'react';
 import { SignIn } from '@clerk/clerk-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { userAuthorContextObj } from '../../contexts/UserAuthorContext';
 
 function Signin() {
     const [adminEmail, setAdminEmail] = useState('');
     const [adminPassword, setAdminPassword] = useState('');
     const [adminError, setAdminError] = useState('');
     const navigate = useNavigate();
-    const { setCurrentUser } = useContext(userAuthorContextObj);
 
     const handleAdminLogin = async () => {
         try {
@@ -46,10 +44,10 @@ function Signin() {
                     value={adminPassword}
                     onChange={(e) => setAdminPassword(e.target.value)}
                 />
-                <button classname='btn btn-signal'onClick={handleAdminLogin}>Admin Login</button>
+                <button classname='btn btn-danger'onClick={handleAdminLogin}>For ADMIN login</button>
                 {adminError && <p className="text-danger">{adminError}</p>}
-                <hr />
-                <h2>User/Author Sign In</h2>
+                <hr/>
+                <h2>For User/Author LogIn</h2>
                 <SignIn />
             </div>
         </div>

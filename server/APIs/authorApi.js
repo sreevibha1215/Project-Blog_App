@@ -21,12 +21,7 @@ authorApp.post("/article",expressAsyncHandler(async(req,res)=>{
 }))
 
 
-//read all articles
-//authorApp.get('/articles',requireAuth({signInUrl:"unauthorized"}),expressAsyncHandler(async(req,res)=>{
-    //read all articles from db
-    //const listOfArticles= await Article.find();
-    //res.status(200).send({message:"articles",payload:listOfArticles})
-//}))
+
 
 
 

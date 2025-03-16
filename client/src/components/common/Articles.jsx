@@ -6,12 +6,11 @@ import { useAuth } from '@clerk/clerk-react';
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all'); // Default category is 'all'
+  const [selectedCategory, setSelectedCategory] = useState('all'); 
   
   const navigate = useNavigate();
   const { getToken } = useAuth();
 
-  // Fetch articles with filtering
   async function getArticles(category = 'all') {
     try {
       const token = await getToken();
@@ -30,20 +29,17 @@ function Articles() {
     }
   }
 
-  // Handle category change
   function handleCategoryChange(event) {
     const newCategory = event.target.value;
     setSelectedCategory(newCategory);
-    getArticles(newCategory); // Fetch articles based on selected category
+    getArticles(newCategory); 
   }
-gi
-  // Navigate to article
   function gotoArticleById(articleObj) {
     navigate(`../${articleObj.articleId}`, { state: articleObj });
   }
 
   useEffect(() => {
-    getArticles(); // Fetch articles on initial render
+    getArticles();
   }, []);
 
   return (
@@ -51,7 +47,6 @@ gi
       <div>
         {error && <p className='display-4 text-center mt-5 text-danger'>{error}</p>}
         
-        {/* Category Filter Dropdown */}
         <div className="mb-3">
           <label htmlFor="categoryFilter" className="form-label">Filter by Category:</label>
           <select 
@@ -67,7 +62,6 @@ gi
           </select>
         </div>
 
-        {/* Articles List */}
         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
           {articles.map((articleObj) => (
             <div className='col' key={articleObj.articleId}>
